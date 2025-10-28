@@ -5,8 +5,8 @@
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-# Load the Tata Nexon Manual PDF
-pdf_path = "TATA_Nexon_Manual.pdf"
+# Load the PDF doc
+pdf_path = "document.pdf"
 loader = PyPDFLoader(pdf_path)
 documents = loader.load()
 
@@ -42,17 +42,17 @@ qa_chain = RetrievalQA.from_chain_type(
 
 # 5. Define a helper function to answer questions
 def answer_question(question):
-    """Query the RAG pipeline and return an answer based on the Tata Nexon Manual."""
+    """Query the RAG pipeline and return an answer based on the document."""
     return qa_chain.run(question)
 
 # 6. Streamlit user interface for Q&A
 import streamlit as st
 
 # Set up the app title
-st.title("TATA Nexon Manual Q&A")
+st.title("Document Q&A")
 
 # Input box for user questions
-user_query = st.text_input("Ask a question about your TATA Nexon:")
+user_query = st.text_input("Ask a question about your Document:")
 
 # Display the answer when a question is submitted
 if user_query:
